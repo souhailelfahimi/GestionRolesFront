@@ -26,7 +26,7 @@ export class RolesComponent implements OnInit {
     this.role=new Role();
     this.role.role=data['name']
 
-    if(data['consultation']){
+    if(data['all']){
       this.permession=new Permession();
       this.permession.id=1
       this.role.permessions.push(this.permession)
@@ -41,9 +41,14 @@ export class RolesComponent implements OnInit {
       this.permession.id=3
       this.role.permessions.push(this.permession)
     }
-    if(data['maj']){
+    if(data['consultation']){
       this.permession=new Permession();
       this.permession.id=4
+      this.role.permessions.push(this.permession)
+    }
+    if(data['maj']){
+      this.permession=new Permession();
+      this.permession.id=5
       this.role.permessions.push(this.permession)
     }
     console.log(JSON.stringify(this.role))
