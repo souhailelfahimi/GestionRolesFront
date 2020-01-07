@@ -1,0 +1,17 @@
+<p>login works!</p>
+
+
+<form  #f="ngForm" (ngSubmit)="onSubmit(email,pass)">
+  <input type="text" #email="ngModel" id="login" class="form-control fadeIn second" name="login" placeholder="username" ngModel required email>
+  <p style="color: red" *ngIf="email.touched && email.errors?.required">
+      This field is required !!!
+  </p>
+  <p style="color: red" *ngIf="email.touched && email.errors?.email">
+  You have to write a valid email !!!
+  </p>
+  <input #pass="ngModel" type="password" id="password" class="form-control fadeIn third" name="pass" placeholder="password" ngModel required>
+  <p style="color: red" *ngIf="pass.touched && pass.errors?.required">
+      This field is required !!!
+  </p>
+  <input type="submit" [disabled]="f.invalid" class="fadeIn fourth" value="Log In">
+</form>

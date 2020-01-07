@@ -1,0 +1,15 @@
+<p>permessions works!</p>
+<form  #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <input type="text"  id="login" class="form-control fadeIn second" name="login" placeholder="username" ngModel required email>
+
+  <input  type="password" id="password" class="form-control fadeIn third" name="pass" placeholder="password" ngModel required>
+
+  <h2>add role : </h2>
+
+  <select ngModel name="role">
+    <option *ngFor="let role of roles" value="{{role['role']}}">{{role['role']}}</option>
+  </select>
+
+
+  <input type="submit" [disabled]="f.invalid" class="fadeIn fourth" value="Log In">
+</form>

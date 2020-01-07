@@ -1,0 +1,14 @@
+<p>add role !</p>
+
+<form  #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <input type="text"  id="login" class="form-control fadeIn second" name="name" placeholder="role name" ngModel required>
+
+  <h2>Ajouter permissions : </h2>
+  all : <input type="checkbox"  name="all" ngModel>
+  consulation : <input type="checkbox"  name="consultation" ngModel>
+  ajouter : <input type="checkbox"  name="ajouter" ngModel>
+  delete : <input type="checkbox"  name="supprimer" ngModel>
+  update : <input type="checkbox"  name="maj" ngModel>
+
+  <input type="submit" [disabled]="f.invalid" class="fadeIn fourth" value="Log In">
+</form>
