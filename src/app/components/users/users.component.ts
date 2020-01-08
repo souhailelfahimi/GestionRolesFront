@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AuthenticationService} from '../../services/authentication.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -7,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthenticationService) { }
 
   ngOnInit() {
   }
 
 
-  onSubmit(data){
-    console.log(data)
+  onSubmit(data)
+  {
+  	console.log(data);
+   this.authService.register(data.f).subscribe(result=>{
+   	console.log(result);
+   });
   }
 
 }

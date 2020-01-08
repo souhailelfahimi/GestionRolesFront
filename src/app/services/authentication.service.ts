@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import * as jwt_decode from 'jwt-decode';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -40,9 +40,13 @@ export class AuthenticationService {
     });
   }
 
-  public register(user):Observable<any>{
-    return this.httpClient.post(environment.URL_API+"register",user,{
-      headers: {'Content-Type': 'application/json'}
+  public register(user):Observable<any>
+  {
+    let jwtToken = localStorage.getItem("JwtToken");
+    console.log("URL---",environment.URL_API+"register");
+    return this.httpClient.post(environment.URL_API+"register",user,
+    {responseType: 'text',
+      headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
     })
   }
 
