@@ -9,7 +9,7 @@ import { Permession } from 'src/app/models/permession.model';
   styleUrls: ['./roles.component.css']
 })
 export class RolesComponent implements OnInit {
-
+  isCollapsed = false;
   private role: Role;
   private permession: Permession;
 
