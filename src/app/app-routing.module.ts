@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { UsersComponent } from './components/users/users.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { PermessionsComponent } from './components/permessions/permessions.component';
+import { FolderComponent } from './components/folder/folder.component';
+import { DocComponent } from './components/doc/doc.component';
 
 
 const routes: Routes = [
@@ -11,7 +13,9 @@ const routes: Routes = [
   {path:"", redirectTo:"login", pathMatch:"full"},
   {path:"users", component: UsersComponent},
   {path:"roles", component: RolesComponent},
-  {path:"permessions", component: PermessionsComponent}
+  {path:"permessions", component: PermessionsComponent},
+  {path:"folder", component: FolderComponent},
+  {path:"doc/:id", component: DocComponent}
 ];
 
 @NgModule({

@@ -11,6 +11,11 @@ import { PermessionsComponent } from './components/permessions/permessions.compo
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FolderComponent } from './components/folder/folder.component';
 import { DocComponent } from './components/doc/doc.component';
+import { AuthenticationService } from './services/authentication.service';
+import { DocService } from './services/doc.service';
+import { FolderService } from './services/folder.service';
+import { PermessionsService } from './services/permessions.service';
+import { RolesService } from './services/roles.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,7 @@ import { DocComponent } from './components/doc/doc.component';
     FormsModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [AuthenticationService,DocService,FolderService,PermessionsService,RolesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

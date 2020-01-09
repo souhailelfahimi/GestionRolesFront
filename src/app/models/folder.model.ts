@@ -1,3 +1,4 @@
+import { Doc } from './doc.model';
 export class Folder {
 
 public id:number;
