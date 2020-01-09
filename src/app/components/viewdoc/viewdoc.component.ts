@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-viewdoc',
@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewdocComponent implements OnInit {
 
-  constructor() { 
+	idFolder;
+  constructor(private route: ActivatedRoute) { 
 
 
    this.route.params.subscribe(params => 
@@ -16,7 +17,7 @@ export class ViewdocComponent implements OnInit {
 	  	this.idFolder = params['id'];
 	  	
 
-	  	console.log("param",`${id}`);
+	  	console.log("param",this.idFolder);
 	  	});
 
  	 }

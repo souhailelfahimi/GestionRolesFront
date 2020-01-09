@@ -28,7 +28,7 @@ export class DocComponent implements OnInit {
   	this.idFolder = params['id'];
   	
 
-  	console.log("param",`${id}`);
+  	console.log("param",this.idFolder);
   	});
 
   	 this.folderService.getFolderById(this.idFolder).subscribe(result=>
