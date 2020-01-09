@@ -16,6 +16,7 @@ import { DocService } from './services/doc.service';
 import { FolderService } from './services/folder.service';
 import { PermessionsService } from './services/permessions.service';
 import { RolesService } from './services/roles.service';
+import { ViewdocComponent } from './components/viewdoc/viewdoc.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RolesService } from './services/roles.service';
     RolesComponent,
     PermessionsComponent,
     FolderComponent,
-    DocComponent
+    DocComponent,
+    ViewdocComponent
   ],
   imports: [
     BrowserModule,
