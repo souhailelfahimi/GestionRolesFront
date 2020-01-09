@@ -12,15 +12,26 @@ export class RolesComponent implements OnInit {
   isCollapsed = false;
   private role: Role;
   private permession: Permession;
-
+  private roles:any=[];
   constructor(private roleService:RolesService) {
     this.role=new Role();
   }
 
   ngOnInit() {
+    this.getAllRoles()
   }
 
-  onSubmit(data){
+  getAllRoles(){
+   this.roleService.getAllRoles().subscribe(res=>{
+    console.log(res)
+    this.roles=res
+   },err=>{
+    console.log(err)
+   })
+  }
+
+
+  async onSubmit(data){
 
     console.log(data['name'])
     this.role=new Role();
@@ -53,7 +64,14 @@ export class RolesComponent implements OnInit {
     }
     console.log(JSON.stringify(this.role))
 
-    this.roleService.addNewRole(JSON.stringify(this.role));
+    await this.roleService.addNewRole(JSON.stringify(this.role));
+
+    this.getAllRoles();
+  }
+
+  async onDelete(id){
+    await this.roleService.deleteRole(id)
+    this.getAllRoles();
   }
 
 }

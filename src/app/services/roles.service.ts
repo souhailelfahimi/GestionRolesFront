@@ -10,22 +10,22 @@ export class RolesService {
 
   constructor(private http:HttpClient) { }
 
-  addNewRole(role){
+  async addNewRole(role){
     let jwtToken = localStorage.getItem("JwtToken")
     console.log("here we goo : ",role)
-    this.http.post(environment.URL_API+"roles/addroles",role,
+    await this.http.post(environment.URL_API+"roles/addroles",role,
       {responseType: 'text',
-      headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})})
-    .subscribe(res=>{
-      console.log("success")
-    },err=>{
-      console.log(err) 
-    })
+      headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})}).toPromise()
   }
 
   getAllRoles(){
     let jwtToken = localStorage.getItem("JwtToken")
     return this.http.get(environment.URL_API+"roles/getAll",{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});
+  }
+
+  async deleteRole(id){
+    let jwtToken = localStorage.getItem("JwtToken")
+    await this.http.delete(environment.URL_API+"roles/delete/"+id,{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})}).toPromise()
   }
 
 
