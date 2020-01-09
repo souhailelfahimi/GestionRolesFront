@@ -6,6 +6,7 @@ import { RolesComponent } from './components/roles/roles.component';
 import { PermessionsComponent } from './components/permessions/permessions.component';
 import { FolderComponent } from './components/folder/folder.component';
 import { DocComponent } from './components/doc/doc.component';
+import { ViewdocComponent } from './components/viewdoc/viewdoc.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:"roles", component: RolesComponent},
   {path:"permessions", component: PermessionsComponent},
   {path:"folder", component: FolderComponent},
-  {path:"doc/:id", component: DocComponent}
+  {path:"doc/:id", component: DocComponent},
+  {path:"viewdocument/:id", component: ViewdocComponent}
 ];
 
 @NgModule({

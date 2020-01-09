@@ -17,7 +17,7 @@ export class ViewdocComponent implements OnInit {
 	  	this.idFolder = params['id'];
 	  	
 
-	  	console.log("param",this.idFolder);
+	  	console.log("param View",this.idFolder);
 	  	});
 
  	 }

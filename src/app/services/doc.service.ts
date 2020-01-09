@@ -17,7 +17,7 @@ export class DocService {
   {
     let jwtToken = localStorage.getItem("JwtToken");
     console.log("URL---",environment.URL_API+"docs",doc);
-    return this.http.post(environment.URL_API+"documents/addoc/"+doc.id+"/"+doc.titre,doc,
+    return this.http.post(environment.URL_API+"documents/addoc/"+doc.id+"/"+doc.titre,null,
     {
       headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
     })
