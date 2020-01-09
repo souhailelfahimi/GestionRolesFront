@@ -28,5 +28,11 @@ export class RolesService {
     await this.http.delete(environment.URL_API+"roles/delete/"+id,{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})}).toPromise()
   }
 
+  getRoleById(id){
+    let jwtToken = localStorage.getItem("JwtToken")
+    console.log(id)
+    return this.http.get(environment.URL_API+"roles/"+id,{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})})
+  }
+
 
 }

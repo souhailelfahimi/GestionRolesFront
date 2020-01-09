@@ -16,6 +16,8 @@ import { DocService } from './services/doc.service';
 import { FolderService } from './services/folder.service';
 import { PermessionsService } from './services/permessions.service';
 import { RolesService } from './services/roles.service';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+
 
 @NgModule({
   declarations: [
@@ -33,8 +35,10 @@ import { RolesService } from './services/roles.service';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    SnotifyModule
   ],
-  providers: [AuthenticationService,DocService,FolderService,PermessionsService,RolesService],
+  providers: [AuthenticationService,DocService,FolderService,PermessionsService,RolesService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+  SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,13 +12,13 @@ export class FolderComponent implements OnInit {
 
 private folder:Folder;
 private showForm=false;
-private folders:Folder[]=[];
-  constructor(private folderService:FolderService) 
+private folders:any=[];
+  constructor(private folderService:FolderService)
   {
   	this.folder=new Folder();
   }
 
-  ngOnInit() 
+  ngOnInit()
   {
   	this.folderService.getAllFolders().subscribe(result=>
   	{
@@ -29,7 +29,7 @@ private folders:Folder[]=[];
 
   onSubmit(data)
   {
-  	 
+
   	console.log(this.folder);
   	this.folderService.addFolder(this.folder).subscribe(result=>{
    	console.log(result);
