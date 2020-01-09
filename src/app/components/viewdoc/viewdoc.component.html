@@ -26,19 +26,30 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <form class="user" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-                    <div class="form-group">
-                      <input type="text"  id="titredoc" class="form-control fadeIn second" name="titreDoc" class="form-control form-control-user" placeholder="Nom attribut" [(ngModel)]="doc.titre" required >
-                      <input type="text"  id="titredoc" class="form-control fadeIn second" name="titreDoc" class="form-control form-control-user" placeholder="Type" [(ngModel)]="doc.titre" required >
+                  
+                    <div class="form-group" style="text-align: center">
+                      <input type="text"  id="titredoc" class="form-control fadeIn second" name="titreDoc" class="form-control form-control-user" placeholder="Nom attribut" [(ngModel)]="titre" required
+                       style="display: inline-block;width: 45%">
+                     
+                      <select style="display: inline-block;width: 45%;" 
+                      class="form-control "
+                      [(ngModel)]="type"
+                     >
+                      	<option>text</option>
+                      	<option>number</option>
+                      	<option>date</option>
+                      </select>
                     </div>
                     <!-- <div class="form-group">
                       <input  type="password" id="password" class="form-control fadeIn third" name="pass" class="form-control form-control-user" placeholder="password" ngModel required>
                     </div> -->
                     
+                    <div style="text-align: center">
+                    	<input  type="button" (click)="createElement()" class="btn btn-primary btn-user" value="Ajouter attribut" />
+                    </div>
                     
-                    <input  type="submit" class="btn btn-primary btn-user btn-block" value="Ajouter role" />
 
-                  </form>
+                  
                 </div>
               </div>
             </div>
@@ -46,8 +57,12 @@
           </div>
 
           <!-- Content Row -->
-           
-
+          <form class="user" #f="ngForm" (ngSubmit)="onSubmit(f.value)" >
+           			<div class="form-group" id="att">
+                      
+                    </div>
+                     <input  type="submit"  class="btn btn-primary btn-user " value="Save" />
+          </form>
         </div>
         <!-- /.container-fluid -->
 

@@ -23,6 +23,18 @@ export class DocService {
     })
   }
 
+ public addAttribut(attribut):Observable<any>
+  {
+    let jwtToken = localStorage.getItem("JwtToken");
+    console.log("URL---",environment.URL_API+"Attributs ",attribut);
+    return this.http.post(environment.URL_API+"attributs/",attribut,
+    {
+      headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
+    })
+  }
+
+
+
   getAllDocs(){
     let jwtToken = localStorage.getItem("JwtToken")
     return this.http.get(environment.URL_API+"documents/all",{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});
