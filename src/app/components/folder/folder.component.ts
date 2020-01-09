@@ -12,7 +12,7 @@ export class FolderComponent implements OnInit {
 
 private folder:Folder;
 private showForm=false;
-private folders:Folder[]=[];
+private folders:any=[];
   constructor(private folderService:FolderService) 
   {
   	this.folder=new Folder();
@@ -48,5 +48,5 @@ private folders:Folder[]=[];
  	}
  }
 
- 
+
 }

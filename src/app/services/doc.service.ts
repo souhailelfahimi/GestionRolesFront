@@ -16,10 +16,20 @@ export class DocService {
   public addDoc(doc):Observable<any>
   {
     let jwtToken = localStorage.getItem("JwtToken");
-    console.log("URL---",environment.URL_API+"docs");
-    return this.http.post(environment.URL_API+"documents/",doc,
+    console.log("URL---",environment.URL_API+"docs",doc);
+    return this.http.post(environment.URL_API+"documents/addoc/"+doc.id+"/"+doc.titre,doc,
     {
       headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
     })
+  }
+
+  getAllDocs(){
+    let jwtToken = localStorage.getItem("JwtToken")
+    return this.http.get(environment.URL_API+"documents/all",{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});
+  }
+
+  getDocsByFolder(id){
+    let jwtToken = localStorage.getItem("JwtToken")
+    return this.http.get(environment.URL_API+"documents/"+id,{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});
   }
 }

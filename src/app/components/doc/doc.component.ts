@@ -12,11 +12,12 @@ import {FolderService} from '../../services/folder.service';
 })
 export class DocComponent implements OnInit {
 
-	folder:Folder;
+	public folder:Folder;
 	idFolder:number;
 	private showForm=false;
 	private doc:Doc;
-	private docs:Doc[]=[];
+
+	private docs:any=[];
   constructor(private route: ActivatedRoute,
   				private docService:DocService,
   				private folderService:FolderService) 
@@ -29,24 +30,33 @@ export class DocComponent implements OnInit {
 
   	console.log("param",`${id}`);
   	});
+
   	 this.folderService.getFolderById(this.idFolder).subscribe(result=>
   	 {
   	 	console.log("getFolderById",result);
   	 	this.folder=result;
-  	 	this.doc.folder=this.folder;
+  	 	this.doc.setFolder(this.folder);
   	 })
 
    }
 
   ngOnInit() {
+  	
+  	this.docService.getDocsByFolder(this.idFolder).subscribe(result=>
+  	{
+  		console.log(result);
+  		this.docs=result;
+  	});
+
+
   }
 
    onSubmit(data)
   {
   	 
-  	console.log(this.doc,this.folder);
-
-  	this.docService.addDoc(this.doc).subscribe(result=>{
+  	//console.log(this.doc,this.folder);
+  	console.log("Doc send",this.doc);
+  	this.docService.addDoc({"id":this.idFolder,"titre":this.doc.titre}).subscribe(result=>{
    	console.log(result);
    });
   }
