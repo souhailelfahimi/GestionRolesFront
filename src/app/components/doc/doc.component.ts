@@ -12,7 +12,7 @@ import {FolderService} from '../../services/folder.service';
 })
 export class DocComponent implements OnInit {
 
-	public folder:Folder;
+	public folder:any; 
 	idFolder:number;
 	private showForm=false;
 	private doc:Doc;
