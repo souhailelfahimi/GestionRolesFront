@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DocService} from '../../services/doc.service';
+import {Doc} from '../../models/doc.model';
 
 @Component({
   selector: 'app-viewdoc',
@@ -8,17 +10,28 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ViewdocComponent implements OnInit {
 
-	idFolder;
-  constructor(private route: ActivatedRoute) { 
+	idDoc;
+	doc:any;
+  constructor(private route: ActivatedRoute,
+  			private docService:DocService) { 
 
 
    this.route.params.subscribe(params => 
   	 {
-	  	this.idFolder = params['id'];
+	  	this.idDoc = params['id'];
 	  	
 
-	  	console.log("param View",this.idFolder);
+	  	console.log("param View",this.idDoc);
 	  	});
+
+   		this.docService.getDocById(this.idDoc).subscribe(result=>
+   			{
+   				console.log("Doc",result);
+   				this.doc=result;
+   			});
+   		{
+
+   		}
 
  	 }
 

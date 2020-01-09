@@ -32,4 +32,10 @@ export class DocService {
     let jwtToken = localStorage.getItem("JwtToken")
     return this.http.get(environment.URL_API+"documents/"+id,{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});
   }
+
+  getDocById(id){
+    let jwtToken = localStorage.getItem("JwtToken")
+    return this.http.get(environment.URL_API+"documents/"+id,{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});
+  }
+
 }
