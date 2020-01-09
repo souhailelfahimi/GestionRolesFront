@@ -1,26 +1,32 @@
+<div class="container-fluid">
 
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Panel>Users</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+
+
+          </div>
+          <div class="row">
             <div class="col-xl-6 col-lg-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">ajouter utilisateurs</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Ajouter utilisateurs</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                 		<form  #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-						  <input type="text"  id="login" class="form-control fadeIn second" name="login" placeholder="username" [(ngModel)]="user.username" required email>
-
-						  <input  type="password" id="password" class="form-control fadeIn third" name="pass" placeholder="password" [(ngModel)]="user.password" required>
-
-						  <h2>Ajouter permissions : </h2>
-						  all : <input type="checkbox"  name="all" ngModel>
-						  consulation : <input type="checkbox"  name="consultation" ngModel>
-						  ajouter : <input type="checkbox"  name="ajouter" ngModel>
-						  delete : <input type="checkbox"  name="supprimer" ngModel>
-						  update : <input type="checkbox"  name="maj" ngModel>
-
-						  <input type="submit" [disabled]="f.invalid" class="fadeIn fourth" value="Log In">
+                			<div class="form-group">
+						  		<input type="text"  id="login" class="form-control fadeIn second" name="login" placeholder="username" [(ngModel)]="user.username" required email>
+							</div>
+							<div class="form-group">
+						  		<input  type="password" id="password" class="form-control fadeIn third" name="pass" placeholder="password" [(ngModel)]="user.password" required> 
+						  	</div>
+						  <input type="submit" [disabled]="f.invalid" 
+						  class="btn btn-primary btn-user btn-block" value="Save">
 						</form>
                 </div>
               </div>
             </div>
+            </div>
+</div>

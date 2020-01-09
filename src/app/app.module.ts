@@ -9,6 +9,8 @@ import { UsersComponent } from './components/users/users.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { PermessionsComponent } from './components/permessions/permessions.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FolderComponent } from './components/folder/folder.component';
+import { DocComponent } from './components/doc/doc.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     UsersComponent,
     RolesComponent,
-    PermessionsComponent
+    PermessionsComponent,
+    FolderComponent,
+    DocComponent
   ],
   imports: [
     BrowserModule,

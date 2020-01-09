@@ -13,7 +13,9 @@ export class RolesService {
   addNewRole(role){
     let jwtToken = localStorage.getItem("JwtToken")
     console.log("here we goo : ",role)
-    this.http.post(environment.URL_API+"roles/addroles",role,{responseType: 'text',headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})})
+    this.http.post(environment.URL_API+"roles/addroles",role,
+      {responseType: 'text',
+      headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})})
     .subscribe(res=>{
       console.log("success")
     },err=>{
