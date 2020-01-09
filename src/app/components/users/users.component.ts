@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
+import {User} from '../../models/user.model';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  constructor(private authService:AuthenticationService) { }
+	private user:User;
+  constructor(private authService:AuthenticationService) {this.user=new User(); }
 
   ngOnInit() {
   }
@@ -16,7 +17,9 @@ export class UsersComponent implements OnInit {
   onSubmit(data)
   {
   	console.log(data);
-   this.authService.register(data.f).subscribe(result=>{
+  	
+
+   this.authService.register(this.user).subscribe(result=>{
    	console.log(result);
    });
   }
