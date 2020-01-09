@@ -1,1 +1,69 @@
-<p>doc works!</p>
+
+
+ 
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex  mb-4">
+            <img src="assets/img/folder.png" style="width:40px;height:40px;margin-left: 15px;margin-right:15px">
+            <h5>{{folder.titre}}</h5> 
+
+
+          </div>
+          <button class="btn btn-primary btn-user "
+           (click)="funcShowForm()">Nouveau Document
+       		</button>
+          <div class="row" *ngIf="showForm">
+
+            <!-- Area Chart -->
+            <div class="col-xl-6 col-lg-6">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Gestion Document</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <form class="user" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+                    <div class="form-group">
+                      <input type="text"  id="titredoc" class="form-control fadeIn second" name="titreDoc" class="form-control form-control-user" placeholder="Titre du document" [(ngModel)]="doc.titre" required >
+                    </div>
+                    <!-- <div class="form-group">
+                      <input  type="password" id="password" class="form-control fadeIn third" name="pass" class="form-control form-control-user" placeholder="password" ngModel required>
+                    </div> -->
+                    
+                    
+                    <input  type="submit" class="btn btn-primary btn-user btn-block" value="Ajouter role" />
+
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Content Row -->
+          <div class=" card shadow" *ngFor="let item of docs"
+          style="margin:10px;">
+          <div class="card-header">
+          	<div style="display:inline-block;width:7%">
+          		<img src="assets/img/folder.png" style="width:40px;height:40px;margin-left: 15px">
+          	</div>
+          	
+          	<div style="display:inline-block;width:30%">{{item.titre}} 
+          		<span class="badge badge-info">contient {{item.documents.length}} Doc</span></div>
+          	<div style="display:inline-block;width:10%;float:right">
+          		<a [routerLink]="['/doc',item.id]"><img src="assets/img/add.png"
+          		style="width:40px;height:40px;margin-left: 15px">
+          		</a>
+          	</div>
+          </div>
+          
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+

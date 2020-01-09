@@ -24,5 +24,11 @@ export class FolderService {
     let jwtToken = localStorage.getItem("JwtToken")
     return this.http.get(environment.URL_API+"folders/all",{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});
   }
+  getFolderById(id)
+ {
+ 	let jwtToken = localStorage.getItem("JwtToken")
+    return this.http.get(environment.URL_API+"folders/"+id,
+    	{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});
+ }
 
 }
