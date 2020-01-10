@@ -55,13 +55,16 @@
           	<div style="display:inline-block;width:30%">{{item.titre}} 
           	</div>
           	<div style="display:inline-block;width:50%;float:right;text-align: end">
-          		<a [routerLink]="['/viewdoc',item.id]"><img src="assets/img/delete.png"
+          		<a (click)="deleteDoc(item.id)" style="cursor: pointer;"><img src="assets/img/delete.png"
           		style="width:40px;height:40px;margin-left: 15px">
           		</a>
           		<a [routerLink]="['/viewdocument',item.id]"><img src="assets/img/edit.png"
           		style="width:40px;height:40px;margin-left: 15px">
           		</a>
           		<a [routerLink]="['/readdocument',item.id]"><img src="assets/img/read.png"
+          		style="width:40px;height:40px;margin-left: 15px">
+          		</a>
+          		<a [routerLink]="['/updatedocument',item.id]"><img src="assets/img/update.png"
           		style="width:40px;height:40px;margin-left: 15px">
           		</a>
           	</div>

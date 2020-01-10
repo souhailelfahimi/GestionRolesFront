@@ -30,10 +30,29 @@ private folders:any=[];
   onSubmit(data)
   {
 
-  	console.log(this.folder);
-  	this.folderService.addFolder(this.folder).subscribe(result=>{
+  	this.showForm=false;
+  	this.folderService.addFolder(this.folder).subscribe(
+  		result=>
+  		{
+  		this.folders.push(result);
+  		this.showForm=false;
    	console.log(result);
-   });
+   		},
+   		error=>
+   		{
+   			this.folderService.getAllFolders().subscribe(result=>
+			  	{
+			  		console.log(result);
+			  		this.folders=result;
+			  	});
+   		});
+  	this.folderService.getAllFolders().subscribe(result=>
+  	{
+  		console.log(result);
+  		this.folders=result;
+  	});
+
+
   }
 
  funcShowForm()

@@ -49,17 +49,78 @@ export class DocComponent implements OnInit {
   	});
 
 
+
   }
 
    onSubmit(data)
   {
-  	 
+  	 this.showForm=false;
   	//console.log(this.doc,this.folder);
   	console.log("Doc send",this.doc);
   	this.docService.addDoc({"id":this.idFolder,"titre":this.doc.titre}).subscribe(result=>{
+  		//this.docs.push(result);
    	console.log(result);
+   	 this.folderService.getFolderById(this.idFolder).subscribe(result=>
+  	 {
+  	 	console.log("200",result);
+  	 	this.folder=result;
+  	 	this.doc.setFolder(this.folder);
+  	 })
+   	
+   },
+   error=>
+   {
+   	 this.folderService.getFolderById(this.idFolder).subscribe(result=>
+  	 {
+  	 	console.log("error",result);
+  	 	this.folder=result;
+  	 	this.doc.setFolder(this.folder);
+  	 })
    });
+  	  this.folderService.getFolderById(this.idFolder).subscribe(result=>
+  	 {
+  	 	console.log("getFolderById sub",result);
+  	 	this.folder=result;
+  	 	this.doc.setFolder(this.folder);
+  	 })
+
   }
+
+
+ deleteDoc(idToDelete)
+ {
+ 	 this.docService.deleteDoc(idToDelete).subscribe(result=>
+  	 {
+  	 	console.log("Delete",result);
+  	 	this.folderService.getFolderById(this.idFolder).subscribe(result=>
+	  	 {
+	  	 	
+	  	 	this.folder=result;
+	  	 	console.log("thisFolder",this.folder);
+	  	 	this.doc.setFolder(this.folder);
+	  	 })
+  	 	
+  	 },
+  	 error=>
+  	 {
+  	 	this.folderService.getFolderById(this.idFolder).subscribe(result=>
+	  	 {
+	  	 	
+	  	 	this.folder=result;
+	  	 	console.log("thisFolder ERROR",this.folder);
+	  	 	this.doc.setFolder(this.folder);
+	  	 })
+  	 });
+
+  	 this.folderService.getFolderById(this.idFolder).subscribe(result=>
+  	 {
+  	 	
+  	 	this.folder=result;
+  	 	console.log("thisFolder 2",this.folder);
+  	 	this.doc.setFolder(this.folder);
+  	 })
+ }
+
 
   funcShowForm()
  {

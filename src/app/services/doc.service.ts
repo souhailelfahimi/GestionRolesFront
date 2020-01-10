@@ -44,6 +44,16 @@ public addAttribut2(id,attribut):Observable<any>
     })
   }
 
+  public deleteDoc(id):Observable<any>
+  {
+    let jwtToken = localStorage.getItem("JwtToken");
+    console.log("URL---",environment.URL_API+"delete ",id);
+    return this.http.post(environment.URL_API+"documents/delete/"+id,null,
+    {
+      headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
+    })
+  }
+
 
 
   getAllDocs(){

@@ -17,7 +17,8 @@ export class ViewdocComponent implements OnInit {
 	titre:any;
 	attributs:any;
   constructor(private route: ActivatedRoute,
-  			private docService:DocService) { 
+  			private docService:DocService,
+  			private router:Router) { 
 
   	this.attributs=[];
    this.route.params.subscribe(params => 
@@ -69,6 +70,7 @@ export class ViewdocComponent implements OnInit {
 	  console.log(this.attributs);
 	   this.docService.addAttribut2(this.idDoc,this.attributs).subscribe(result=>{
 	    	console.log(result);
+	    	this.router.navigate(['/readdocument',this.idDoc]);
 	    });
 
 	}
