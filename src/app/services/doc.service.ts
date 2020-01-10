@@ -44,6 +44,16 @@ public addAttribut2(id,attribut):Observable<any>
     })
   }
 
+  public modAttribut(attribut):Observable<any>
+  {
+    let jwtToken = localStorage.getItem("JwtToken");
+    console.log("URL---",environment.URL_API+"Attributs ",attribut);
+    return this.http.post(environment.URL_API+"attributs/modifier",attribut,
+    {
+      headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
+    })
+  }
+
   public deleteDoc(id):Observable<any>
   {
     let jwtToken = localStorage.getItem("JwtToken");
@@ -53,6 +63,7 @@ public addAttribut2(id,attribut):Observable<any>
       headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
     })
   }
+
 
 
 
