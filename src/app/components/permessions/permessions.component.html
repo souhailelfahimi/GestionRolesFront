@@ -6,14 +6,14 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Panel>Permessions</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <button (click)="onCreate()"  *ngIf="updatePermession" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">ajouter User</button>
 
 
           </div>
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-6 col-lg-6">
+            <div class="col-xl-5 col-lg-5">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -21,26 +21,26 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <form class="user" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+                  <form class="user" >
                     <div class="form-group">
-                      <input type="text"  id="login" class="form-control fadeIn second" name="login" class="form-control form-control-user" placeholder="username" ngModel required email>
+                      <input type="text" [(ngModel)]="user.username"  id="login" class="form-control fadeIn second" name="login" class="form-control form-control-user" placeholder="username" ngModel required email>
                     </div>
                     <div class="form-group">
-                      <input  type="password" id="password" class="form-control fadeIn third" name="pass" class="form-control form-control-user" placeholder="password" ngModel required>
+                      <input  type="password" [(ngModel)]="user.password" id="password" class="form-control fadeIn third" name="pass" class="form-control form-control-user" placeholder="password" ngModel required>
                     </div>
                     <h6>Selectionner role</h6>
                     <div class="form-group ">
-                      <select class="form-control" ngModel name="role">
+                      <select [(ngModel)]="role.role" class="form-control" ngModel name="role">
                         <option *ngFor="let role of roles" value="{{role['role']}}">{{role['role']}}</option>
                       </select>
                     </div>
-                    <input [disabled]="f.invalid" type="submit" class="btn btn-primary btn-user btn-block" value="Ajouter role" />
-
+                    <input *ngIf="addPermession" (click)="onSubmit()" type="submit" class="btn btn-primary btn-user btn-block" value="Ajouter role" />
+                    <input *ngIf="updatePermession" (click)="onUpdatePermession(user.id)" type="submit" class="btn btn-warning btn-user btn-block" value="Modifier role" />
                   </form>
                 </div>
               </div>
             </div>
-            <div class="col-xl-6 col-lg-6">
+            <div class="col-xl-7 col-lg-7">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -48,7 +48,30 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>username</th>
+                          <th>role</th>
+                          <th>actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let u of users">
+                          <td>{{u.username}}</td>
+                          <td *ngIf="u.roles==0">-</td>
+                          <td *ngFor="let r of u.roles">{{r.name}}</td >
+                          <td>
+                            <button (click)="onDelete(u.id)" class="btn btn-sm btn-danger">supprimer</button>
+                            <button (click)="onUpdate(u.id)" style="margin-left:5px;"  class="btn btn-sm btn-warning">modifier</button>
+                          </td>
+                        </tr>
+                        <tr>
 
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

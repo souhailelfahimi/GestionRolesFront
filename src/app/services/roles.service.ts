@@ -18,6 +18,14 @@ export class RolesService {
       headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})}).toPromise()
   }
 
+  async updateRole(role){
+    let jwtToken = localStorage.getItem("JwtToken")
+    console.log("here we goo : ",role)
+    await this.http.post(environment.URL_API+"roles/update",role,
+      {responseType: 'text',
+      headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})}).toPromise()
+  }
+
   getAllRoles(){
     let jwtToken = localStorage.getItem("JwtToken")
     return this.http.get(environment.URL_API+"roles/getAll",{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})});

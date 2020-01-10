@@ -17,11 +17,7 @@ export class UsersComponent implements OnInit {
   onSubmit(data)
   {
   	console.log(data);
-  	
 
-   this.authService.register(this.user).subscribe(result=>{
-   	console.log(result);
-   });
   }
 
 }

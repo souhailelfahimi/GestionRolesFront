@@ -32,7 +32,7 @@
                       <input type="checkbox"  name="maj" [(ngModel)]="maj" [ngModelOptions]="{standalone: true}"> <span> update </span>
                     </div>
                     <input *ngIf="addRole" (click)="onSubmit()" type="submit" class="btn btn-primary btn-user btn-block" value="Ajouter role" />
-                    <input *ngIf="updateRole" (click)="onUpdate()" type="submit" class="btn btn-warning btn-user btn-block" value="Update role" />
+                    <input *ngIf="updateRole" (click)="onUpdateRole(role.id)" type="submit" class="btn btn-warning btn-user btn-block" value="Update role" />
                   </form>
                 </div>
               </div>
@@ -55,12 +55,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let role of roles">
-                          <td>{{role.role}}</td>
-                          <td>System Architect</td>
+                        <tr *ngFor="let r of roles">
+                          <td>{{r.role}}</td>
+                          <td>{{r.id}}</td>
                           <td>
-                            <button (click)="onDelete(role.id)" class="btn btn-sm btn-danger">supprimer</button>
-                            <button style="margin-left:5px;" (click)="onUpdate(role.id)" class="btn btn-sm btn-warning">modifier</button>
+                            <button (click)="onDelete(r.id)" class="btn btn-sm btn-danger">supprimer</button>
+                            <button style="margin-left:5px;" (click)="onUpdate(r.id)" class="btn btn-sm btn-warning">modifier</button>
                           </td>
                         </tr>
                         <tr>
