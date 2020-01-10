@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   constructor(private authenticationService:AuthenticationService,private router:Router) { }
 
   ngOnInit() {
+    let jwtToken = localStorage.getItem("JwtToken");
+    if(jwtToken) this.router.navigateByUrl('/folder')
   }
 
 
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit {
       res => {
             let jwtToken = res.headers.get('Authorization')
             this.authenticationService.saveToken(jwtToken)
-            this.router.navigate(['/users'])
+            this.router.navigate(['/folder'])
             console.log(res)
       },
       err => {

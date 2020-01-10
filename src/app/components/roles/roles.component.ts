@@ -3,6 +3,7 @@ import { RolesService } from 'src/app/services/roles.service';
 import { Role } from 'src/app/models/role.model';
 import { Permession } from 'src/app/models/permession.model';
 import { SnotifyService } from 'ng-snotify';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-roles',
@@ -22,12 +23,13 @@ export class RolesComponent implements OnInit {
 
   private addRole=true;
   private updateRole=false;
-  constructor(private roleService:RolesService,private snotifyService:SnotifyService) {
+  constructor(private router:Router,private roleService:RolesService,private snotifyService:SnotifyService) {
     this.role=new Role();
   }
 
   ngOnInit() {
-
+    let jwtToken = localStorage.getItem("JwtToken");
+    if(jwtToken==null) this.router.navigateByUrl('/login')
     this.getAllRoles()
   }
 
