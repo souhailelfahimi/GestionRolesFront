@@ -1,6 +1,6 @@
 
 
- 
+
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -8,13 +8,28 @@
           <!-- Page Heading -->
           <div class="d-sm-flex  mb-4">
             <img src="assets/img/folder.png" style="width:40px;height:40px;margin-left: 15px;margin-right:15px">
-            <h5>{{folder.titre}}</h5> 
+            <h5>{{folder.titre}}</h5>
 
 
           </div>
-          <button class="btn btn-primary btn-user "
+          <button  class="btn btn-primary btn-user "
            (click)="funcShowForm()">Nouveau Document
-       		</button>
+           </button>
+           <div class="float-right">
+            <input type="file" [(ngModel)]="facturePath" accept="application/pdf" #file hidden>
+            <button [disabled]='lettrePath' style="margin-left:5px" class="btn btn-success btn-user "
+            (click)="file.click();">Scan Facture
+            </button>
+
+            <input type="file" [(ngModel)]="lettrePath" accept="application/pdf" #fileL hidden>
+            <button [disabled]='facturePath' style="margin-left:5px" class="btn btn-success btn-user "
+            (click)="fileL.click();">Scan Lettre
+            </button>
+
+            <button *ngIf="facturePath || lettrePath" style="margin-left:5px" class="btn btn-primary btn-user "
+            (click)="scanPDF()">envoyer
+            </button>
+           </div>
           <div class="row" *ngIf="showForm">
 
             <!-- Area Chart -->
@@ -33,15 +48,15 @@
                     <!-- <div class="form-group">
                       <input  type="password" id="password" class="form-control fadeIn third" name="pass" class="form-control form-control-user" placeholder="password" ngModel required>
                     </div> -->
-                    
-                    
+
+
                     <input  type="submit" class="btn btn-primary btn-user btn-block" value="Ajouter role" />
 
                   </form>
                 </div>
               </div>
             </div>
-            
+
           </div>
 
           <!-- Content Row -->
@@ -51,8 +66,8 @@
           	<div style="display:inline-block;width:7%">
           		<img src="assets/img/doc.png" style="width:40px;height:40px;margin-left: 15px">
           	</div>
-          	
-          	<div style="display:inline-block;width:30%">{{item.titre}} 
+
+          	<div style="display:inline-block;width:30%">{{item.titre}}
           	</div>
           	<div style="display:inline-block;width:50%;float:right;text-align: end">
           		<a (click)="deleteDoc(item.id)" style="cursor: pointer;"><img src="assets/img/delete.png"
@@ -69,7 +84,7 @@
           		</a>
           	</div>
           </div>
-          
+
           </div>
 
         </div>

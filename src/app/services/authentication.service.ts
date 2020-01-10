@@ -40,6 +40,19 @@ export class AuthenticationService {
     });
   }
 
+  PermessionExist(permession){
+    for(let i=0;i<this.getRoles().length;i++){
+      if(this.getRoles()[i]['authority']==permession) return 1
+    }
+    return 0
+  }
+
+  public getRoles(){
+    let token=this.getToken()
+    var decoded = jwt_decode(token)
+    return decoded.roles
+  }
+
   async register(user)
   {
     let jwtToken = localStorage.getItem("JwtToken");

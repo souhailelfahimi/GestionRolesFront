@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { PermessionsService } from 'src/app/services/permessions.service';
 import { SnotifyService } from 'ng-snotify';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-permessions',
@@ -19,9 +20,15 @@ export class PermessionsComponent implements OnInit {
   public users:any=[];
   private addPermession=true;
   private updatePermession=false;
-  constructor(private snotifyService:SnotifyService,private roleService:RolesService,private userService:AuthenticationService,private permessionService:PermessionsService) { }
+  constructor(private router:Router,private snotifyService:SnotifyService,private roleService:RolesService,private userService:AuthenticationService,private permessionService:PermessionsService) { }
+
+
+
 
   ngOnInit() {
+
+    let jwtToken = localStorage.getItem("JwtToken");
+    if(jwtToken==null) this.router.navigateByUrl('/login')
     this.user=new User();
     this.role=new Role()
     this.getAllusers()

@@ -12,21 +12,23 @@ import {FolderService} from '../../services/folder.service';
 })
 export class DocComponent implements OnInit {
 
-	public folder:any; 
+	public folder:any;
 	idFolder:number;
 	private showForm=false;
 	private doc:Doc;
-
+  private facturePath=null;
+  private lettrePath=null;
+  private nvDocument=true;
 	private docs:any=[];
   constructor(private route: ActivatedRoute,
   				private docService:DocService,
-  				private folderService:FolderService) 
+  				private folderService:FolderService)
   {
   	this.doc=new Doc();
-  	 this.route.params.subscribe(params => 
+  	 this.route.params.subscribe(params =>
   	 {
   	this.idFolder = params['id'];
-  	
+
 
   	console.log("param",this.idFolder);
   	});
@@ -41,7 +43,7 @@ export class DocComponent implements OnInit {
    }
 
   ngOnInit() {
-  	
+
   	this.docService.getDocsByFolder(this.idFolder).subscribe(result=>
   	{
   		console.log(result);
@@ -66,7 +68,7 @@ export class DocComponent implements OnInit {
   	 	this.folder=result;
   	 	this.doc.setFolder(this.folder);
   	 })
-   	
+
    },
    error=>
    {
@@ -94,18 +96,18 @@ export class DocComponent implements OnInit {
   	 	console.log("Delete",result);
   	 	this.folderService.getFolderById(this.idFolder).subscribe(result=>
 	  	 {
-	  	 	
+
 	  	 	this.folder=result;
 	  	 	console.log("thisFolder",this.folder);
 	  	 	this.doc.setFolder(this.folder);
 	  	 })
-  	 	
+
   	 },
   	 error=>
   	 {
   	 	this.folderService.getFolderById(this.idFolder).subscribe(result=>
 	  	 {
-	  	 	
+
 	  	 	this.folder=result;
 	  	 	console.log("thisFolder ERROR",this.folder);
 	  	 	this.doc.setFolder(this.folder);
@@ -114,12 +116,29 @@ export class DocComponent implements OnInit {
 
   	 this.folderService.getFolderById(this.idFolder).subscribe(result=>
   	 {
-  	 	
+
   	 	this.folder=result;
   	 	console.log("thisFolder 2",this.folder);
   	 	this.doc.setFolder(this.folder);
   	 })
  }
+
+  async scanPDF(){
+    console.log(this.idFolder)
+    if(this.facturePath){
+      await this.docService.addFacturePDF(this.idFolder,this.facturePath)
+      this.folderService.getFolderById(this.idFolder).subscribe(result=>
+        {
+          console.log("200",result);
+          this.folder=result;
+          this.doc.setFolder(this.folder);
+        })
+    }else if(this.lettrePath){
+
+    }
+
+  }
+
 
 
   funcShowForm()

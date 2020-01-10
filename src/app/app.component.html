@@ -35,14 +35,6 @@
         gestion Dossiers
       </div>
       <li class="nav-item">
-        <a class="nav-link"  routerLink="roles" >
-          <i class="fas fa-fw fa-cog"></i>
-          <span>gestion roles</span>
-        </a>
-        <a class="nav-link"  routerLink="permessions" >
-          <i class="fas fa-fw fa-cog"></i>
-          <span>gestion permessions</span>
-        </a>
         <a class="nav-link"  routerLink="folder" >
           <i class="fas fa-fw fa-cog"></i>
           <span>gestion documents </span>
@@ -55,13 +47,20 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link"  routerLink="users" >
+        <a class="nav-link"  routerLink="roles" >
           <i class="fas fa-fw fa-cog"></i>
-          <span>gestion users</span>
+          <span>gestion roles</span>
         </a>
-        <a class="nav-link"   >
+        <a class="nav-link"  routerLink="permessions" >
           <i class="fas fa-fw fa-cog"></i>
           <span>gestion permessions</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <li class="nav-item">
+        <a (click)="logout()" class="nav-link"   >
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Se Déconnecter</span>
         </a>
       </li>
       <!-- Divider -->
