@@ -27,6 +27,7 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.getAllRoles()
   }
 
@@ -99,6 +100,7 @@ export class RolesComponent implements OnInit {
   }
 
   async onDelete(id){
+    console.log(id)
     await this.roleService.deleteRole(id)
     this.getAllRoles();
     this.showDeleteNotification("role a été supprimer")
@@ -130,6 +132,7 @@ export class RolesComponent implements OnInit {
       {
         console.log(res)
         this.role.role=res['role']
+        this.role.id=res['id']
        for(let i=0;i<res['permessions'].length;i++){
          console.log(res['permessions'][i]['name'])
       if(res['permessions'][i]['name']=='All')
@@ -144,12 +147,6 @@ export class RolesComponent implements OnInit {
         this.supprimer=true;
 
        }
-
-
-
-
-
-
     },err=>{
       console.log(err)
     })
@@ -157,6 +154,50 @@ export class RolesComponent implements OnInit {
 
 
 
+  }
+
+  async onUpdateRole(id){
+
+    this.role.permessions=[]
+
+    if(this.all){
+      this.permession=new Permession();
+      this.permession.id=1
+      this.role.permessions.push(this.permession)
+    }
+    if(this.ajouter){
+      this.permession=new Permession();
+      this.permession.id=2
+      this.role.permessions.push(this.permession)
+    }
+    if(this.supprimer){
+      this.permession=new Permession();
+      this.permession.id=3
+      this.role.permessions.push(this.permession)
+    }
+    if(this.consultation){
+      this.permession=new Permession();
+      this.permession.id=4
+      this.role.permessions.push(this.permession)
+    }
+    if(this.maj){
+      this.permession=new Permession();
+      this.permession.id=5
+      this.role.permessions.push(this.permession)
+    }
+    console.log(JSON.stringify(this.role))
+    await this.roleService.updateRole(this.role)
+
+    this.getAllRoles();
+    this.showSuccessNotification("modification avec success")
+    this.addRole=true
+    this.updateRole=false
+    this.role=new Role();
+    this.all=false;
+    this.consultation=false;
+    this.maj=false;
+    this.ajouter=false;
+    this.supprimer=false;
   }
 
 

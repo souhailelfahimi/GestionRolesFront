@@ -40,18 +40,20 @@ export class AuthenticationService {
     });
   }
 
-  public register(user):Observable<any>
+  async register(user)
   {
     let jwtToken = localStorage.getItem("JwtToken");
     console.log("URL---",environment.URL_API+"register");
-    return this.httpClient.post(environment.URL_API+"register",user,
+    await this.httpClient.post(environment.URL_API+"register",user,
     {responseType: 'text',
       headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
-    })
+    }).toPromise()
   }
 
   public loadToken(){
     this.jwtToken = localStorage.getItem("JwtToken")
   }
+
+
 
 }
