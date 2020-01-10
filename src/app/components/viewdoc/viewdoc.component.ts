@@ -15,10 +15,11 @@ export class ViewdocComponent implements OnInit {
 	doc:any;
 	type:any;
 	titre:any;
+	attributs:any;
   constructor(private route: ActivatedRoute,
   			private docService:DocService) { 
 
-
+  	this.attributs=[];
    this.route.params.subscribe(params => 
   	 {
 	  	this.idDoc = params['id'];
@@ -32,9 +33,7 @@ export class ViewdocComponent implements OnInit {
    				console.log("Doc",result);
    				this.doc=result;
    			});
-   		{
-
-   		}
+   		
 
  	 }
 
@@ -60,14 +59,17 @@ export class ViewdocComponent implements OnInit {
 	  	//console.log(c[i].nodeName,c[i],c[i].value,c[i].placeholder);
 	    //txt = txt + c[i].nodeName + "<br>";
 	    var at=new Attribute();
-	    at.doc=this.doc;
+	    //at.doc=this.doc;
 	    at.keyD=c[i].placeholder;
 	    at.value=c[i].value;
-	    console.log(at);
-	    this.docService.addAttribut(at).subscribe(result=>{
+	    this.attributs.push(at);
+	    
+	   
+	  }
+	  console.log(this.attributs);
+	   this.docService.addAttribut2(this.idDoc,this.attributs).subscribe(result=>{
 	    	console.log(result);
 	    });
-	  }
 
 	}
 }

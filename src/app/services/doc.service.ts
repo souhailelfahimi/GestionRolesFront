@@ -34,6 +34,17 @@ export class DocService {
   }
 
 
+public addAttribut2(id,attribut):Observable<any>
+  {
+    let jwtToken = localStorage.getItem("JwtToken");
+    console.log("URL---",environment.URL_API+"Attributs ",attribut);
+    return this.http.post(environment.URL_API+"attributs/addAttributes/"+id,attribut,
+    {
+      headers: new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})
+    })
+  }
+
+
 
   getAllDocs(){
     let jwtToken = localStorage.getItem("JwtToken")

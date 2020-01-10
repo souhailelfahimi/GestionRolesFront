@@ -20,6 +20,7 @@ import { RolesService } from './services/roles.service';
 import { ViewdocComponent } from './components/viewdoc/viewdoc.component';
 
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { ReaddocComponent } from './components/readdoc/readdoc.component';
 
 
 
@@ -32,7 +33,8 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     PermessionsComponent,
     FolderComponent,
     DocComponent,
-    ViewdocComponent
+    ViewdocComponent,
+    ReaddocComponent
   ],
   imports: [
     BrowserModule,
