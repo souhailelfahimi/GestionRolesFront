@@ -73,7 +73,10 @@ public addAttribut2(id,attribut):Observable<any>
 
   async addFacturePDF(id,path){
     let jwtToken = localStorage.getItem("JwtToken")
-    await this.http.post(environment.URL_API+"/pdf/facture/"+id+"/path/"+path,null,{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})}).toPromise()
+
+    await this.http.post(environment.URL_API+"documents/pdf/facture/savepdf",{"id":id,"path":path},{headers : new HttpHeaders({'authorization':jwtToken,'Content-Type':'application/json'})}).toPromise()
+
+
   }
 
 }

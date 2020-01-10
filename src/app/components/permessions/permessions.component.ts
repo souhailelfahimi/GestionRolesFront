@@ -22,11 +22,8 @@ export class PermessionsComponent implements OnInit {
   private updatePermession=false;
   constructor(private router:Router,private snotifyService:SnotifyService,private roleService:RolesService,private userService:AuthenticationService,private permessionService:PermessionsService) { }
 
-
-
-
   ngOnInit() {
-
+    console.log(this.userService.getRoles())
     let jwtToken = localStorage.getItem("JwtToken");
     if(jwtToken==null) this.router.navigateByUrl('/login')
     this.user=new User();
