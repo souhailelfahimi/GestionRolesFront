@@ -4,6 +4,7 @@ import {Folder} from '../../models/folder.model';
 import {Doc} from '../../models/doc.model';
 import {DocService} from '../../services/doc.service';
 import {FolderService} from '../../services/folder.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-doc',
@@ -20,9 +21,14 @@ export class DocComponent implements OnInit {
   private lettrePath=null;
   private nvDocument=true;
 	private docs:any=[];
+	consultation;
+	ajouter;
+	supprimer;
+	update;
   constructor(private route: ActivatedRoute,
   				private docService:DocService,
-  				private folderService:FolderService)
+  				private folderService:FolderService,
+  				private authService:AuthenticationService)
   {
   	this.doc=new Doc();
   	 this.route.params.subscribe(params =>
@@ -38,7 +44,13 @@ export class DocComponent implements OnInit {
   	 	console.log("getFolderById",result);
   	 	this.folder=result;
   	 	this.doc.setFolder(this.folder);
-  	 })
+  	 });
+
+  	 	this.consultation=(this.authService.PermessionExist("consultation"))?true:false;
+  	this.ajouter=(this.authService.PermessionExist("ajouter"))?true:false;
+  	this.supprimer=(this.authService.PermessionExist("delete"))?true:false;
+  	this.update=(this.authService.PermessionExist("modification"))?true:false;
+  	console.log("role",this.authService.PermessionExist("update"));
 
    }
 
@@ -50,7 +62,8 @@ export class DocComponent implements OnInit {
   		this.docs=result;
   	});
 
-
+  	
+  
 
   }
 
