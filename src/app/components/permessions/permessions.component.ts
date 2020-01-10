@@ -77,6 +77,7 @@ export class PermessionsComponent implements OnInit {
    this.showSuccessNotification("user a été supprimer avec success")
   }
 
+
   async onUpdatePermession(id){
     this.user.roles=[]
     console.log(id)
@@ -88,6 +89,8 @@ export class PermessionsComponent implements OnInit {
     this.showSuccessNotification("user a été modifier avec success")
     this.user=new User()
     this.role=new Role()
+    this.addPermession=true
+    this.updatePermession=false
   }
 
   showDeleteNotification(Msg){

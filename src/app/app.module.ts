@@ -21,6 +21,7 @@ import { ViewdocComponent } from './components/viewdoc/viewdoc.component';
 
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { ReaddocComponent } from './components/readdoc/readdoc.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -42,7 +43,8 @@ import { ReaddocComponent } from './components/readdoc/readdoc.component';
     HttpClientModule,
     FormsModule,
     NgbModule,
-    SnotifyModule
+    SnotifyModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [AuthenticationService,DocService,FolderService,PermessionsService,RolesService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
   SnotifyService],

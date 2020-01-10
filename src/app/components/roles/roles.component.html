@@ -59,7 +59,10 @@
                           <td>{{r.role}}</td>
                           <td>{{r.id}}</td>
                           <td>
-                            <button (click)="onDelete(r.id)" class="btn btn-sm btn-danger">supprimer</button>
+                            <button
+                            [swal]="{confirmButtonText: 'Oui, Supprimer!',confirmButtonColor: '#3085d6', showCancelButton: true,title: 'voulez vous supprimer vraiment utilisateur'}"
+                            (confirm)="onDelete(r.id)"
+                             class="btn btn-sm btn-danger">supprimer</button>
                             <button style="margin-left:5px;" (click)="onUpdate(r.id)" class="btn btn-sm btn-warning">modifier</button>
                           </td>
                         </tr>
