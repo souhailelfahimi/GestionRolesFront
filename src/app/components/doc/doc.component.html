@@ -21,10 +21,10 @@
             (click)="file.click();">Scan Facture
             </button>
 
-            <input type="file" [(ngModel)]="lettrePath" accept="application/pdf" #fileL hidden>
+            <!--<input type="file" [(ngModel)]="lettrePath" accept="application/pdf" #fileL hidden>
             <button [disabled]='facturePath' style="margin-left:5px" class="btn btn-success btn-user "
             (click)="fileL.click();">Scan Lettre
-            </button>
+            </button>-->
 
             <button *ngIf="facturePath || lettrePath" style="margin-left:5px" class="btn btn-primary btn-user "
             (click)="scanPDF()">envoyer

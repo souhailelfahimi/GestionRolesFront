@@ -9,6 +9,7 @@ import { DocComponent } from './components/doc/doc.component';
 import { ViewdocComponent } from './components/viewdoc/viewdoc.component';
 import { ReaddocComponent } from './components/readdoc/readdoc.component';
 import { UdatedocComponent } from './components/udatedoc/udatedoc.component';
+import { TestComponent } from './components/test/test.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"permessions", component: PermessionsComponent},
   {path:"folder", component: FolderComponent},
   {path:"doc/:id", component: DocComponent},
+  {path:"test",component: TestComponent},
   {path:"viewdocument/:id", component: ViewdocComponent},
   {path:"readdocument/:id", component: ReaddocComponent},
   {path:"updatedocument/:id", component: UdatedocComponent}

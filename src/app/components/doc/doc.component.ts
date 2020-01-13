@@ -62,8 +62,8 @@ export class DocComponent implements OnInit {
   		this.docs=result;
   	});
 
-  	
-  
+
+
 
   }
 
@@ -137,7 +137,7 @@ export class DocComponent implements OnInit {
  }
 
   async scanPDF(){
-    console.log(this.idFolder)
+    console.log(this.facturePath)
     if(this.facturePath){
       await this.docService.addFacturePDF(this.idFolder,this.facturePath)
       this.folderService.getFolderById(this.idFolder).subscribe(result=>

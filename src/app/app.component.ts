@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'my-app';
-  constructor(private autu:AuthenticationService,private router:Router) { }
+  jwtToken:any;
+  constructor(private autu:AuthenticationService,private router:Router) {
+     this.jwtToken = localStorage.getItem("JwtToken")
+  }
   logout(){
     this.autu.logOut()
     this.router.navigateByUrl('/login')

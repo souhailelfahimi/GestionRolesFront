@@ -9,7 +9,7 @@ import {Attribute} from '../../models/attribute.model';
   templateUrl: './udatedoc.component.html',
   styleUrls: ['./udatedoc.component.css']
 })
-export class UdatedocComponent implements OnInit 
+export class UdatedocComponent implements OnInit
 {
 	idDoc;
 	doc:Doc;
@@ -19,44 +19,44 @@ export class UdatedocComponent implements OnInit
   constructor(
   			private route: ActivatedRoute,
   			private docService:DocService,
-  			private router:Router) 
-  			{ 
-  				this.route.params.subscribe(params => 
+  			private router:Router)
+  			{
+  				this.route.params.subscribe(params =>
 			  	 {
 				  	this.idDoc = params['id'];
 				  	console.log("param View",this.idDoc);
 
 				  	this.docService.getDocById(this.idDoc).subscribe(result=>
-		   			{ 
+		   			{
 		   				this.doc=result;
 		   			});
 				 });
 
-  				
+
 
 this.createElement();
   			}
 
-  ngOnInit() 
+  ngOnInit()
   {
-  	
+
   }
 
   public createElement()
- { 
- 	
- 	this.route.params.subscribe(params => 
+ {
+
+ 	this.route.params.subscribe(params =>
 			  	 {
 				  	this.idDoc = params['id'];
 				  	console.log("param View",this.idDoc);
 
 				  	this.docService.getDocById(this.idDoc).subscribe(result=>
-		   			{ 
+		   			{
 		   				this.doc=result;
 		   			});
 				 });
  	this.docService.getDocById(this.idDoc).subscribe(result=>
-	{ 
+	{
 		this.doc=result;
 		result.attributes.forEach(function(item)
 			{
@@ -71,8 +71,8 @@ this.createElement();
 	});
 
  	console.log("function create ",this.doc,this.idDoc);
- 	
-	
+
+
 }
 onSubmit()
 {

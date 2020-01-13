@@ -23,6 +23,7 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { ReaddocComponent } from './components/readdoc/readdoc.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { UdatedocComponent } from './components/udatedoc/udatedoc.component';
+import { TestComponent } from './components/test/test.component';
 
 
 
@@ -37,7 +38,8 @@ import { UdatedocComponent } from './components/udatedoc/udatedoc.component';
     DocComponent,
     ViewdocComponent,
     ReaddocComponent,
-    UdatedocComponent
+    UdatedocComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
